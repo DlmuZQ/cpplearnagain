@@ -1,0 +1,35 @@
+1、Git安装与初始化
+2、Git初始配置,采用命令行的方式配置：
+	git config –global user.name “Your Name”
+	git config –global user.email “Your Email”
+3、初始化目录仓库：git init
+4、将文件提交到仓库：git commit -m "相关信息"
+5、查看文件状态，是否被修改：git status
+6、查看修改的部分：git diff filename
+7、查看日志：git log；当该命令不好用时，可采用git reflog
+8、退回以前的版本：git reset --hard HEAD~0-..（0表示当前版本）;若想在返回当前版本，在git log中找到相应的commit id即可，采用上面的命令就可退回。
+##################################################
+
+9、工作区==>通过git add命令将工作区文件加入到 ==>暂存区 ==>git commit ==>提交修改
+
+##################################################
+10、想直接丢弃工作区的修改时，用命令git checkout -- file；若还添加到了暂存区时，首先用命令git reset HEAD file，恢复版本，然后再放弃修改
+**************************************************************************
+*重要配置远程仓库：
+*ssh-keygen -t rsa -C "youremail@example.com"
+*在目录下找到.ssh目标
+*将id_rsa.pub上的内容粘贴到gitHub上
+*链接远程： git remote add origin git@github.com:michaelliao/learngit.git
+**************************************************************************
+11、把本地库的所有内容推送到远程库上：git push -u origin master；之后可以git push origin master提交
+
+#########################################################
+#去除git push提交代码时总是输入密码的方法：
+#git config --global credential.helper store
+#在第一次提交后输入用户和密码后，之后就不用再输入
+########################################################
+
+12、更新本地数据：git pull
+13、创建分支：git checkout -b branchname
+    查看当前分支：git branch
+    将更改的数据合并到分支上：git merge branchname
