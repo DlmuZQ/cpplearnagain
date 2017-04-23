@@ -23,3 +23,15 @@ double dval = 3.14;
 //中间隐式的类型转换，const int temp = dval
 //const int &v = temp;
 const int &v = dval;
+
+/*
+decltype类型指示符
+decltype的表达式如果加上了括号的变量，结果将是引用
+*/
+decltype((i)) d;//error,引用必须初始化
+decltype(i) e;
+
+/*
+头文件不应该包含using声明，当该头文件被引用到其他文件中是，会因为命名空间的问题出现不可预料的结果
+*/
+
