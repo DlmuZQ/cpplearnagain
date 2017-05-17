@@ -82,3 +82,24 @@ else
 fi
 21、pwd;date;cal
 #多个命令用；隔开
+22、截取字符串变量扩展名
+${variable%pattern} #从变量值后端开始，截取与%后面模式匹配的最短值
+${variable%%pattern} #从变量值后端开始，截取与%%后面模式匹配的最长值
+${variable#pattern} #从变量值前端开始，截取与#后面模式匹配的最短值
+${variable##pattern} #从变量值前端开始，截取与#后面模式匹配的最长值
+23、$参数相关
+zq@zq-OptiPlex-GX620:~$ set a b c
+zq@zq-OptiPlex-GX620:~$ echo $0
+-bash
+zq@zq-OptiPlex-GX620:~$ echo $1
+a
+zq@zq-OptiPlex-GX620:~$ echo $#
+3
+zq@zq-OptiPlex-GX620:~$ echo $*
+a b c
+24、`linux command` #执行相关linux命令
+    $(linux command) #执行相关linux命令
+25、算数扩展
+zq@zq-OptiPlex-GX620:~$ echo $[1+2]
+3
+
