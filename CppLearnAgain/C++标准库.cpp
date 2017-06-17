@@ -408,7 +408,7 @@ e、shared_ptr和new结合使用
     int i = *x;//未定义
   }
 
-f、传递unique_ptr参数和返回unique_ptr
+f、传递unique_ptr参数和返回unique_ptr（猜想采用了移动拷贝机制）
   由于uniq_ptr拥有它指向对象，因此unique_ptr不支持拷贝和赋值操作；但是可以拷贝或者赋值一个将要被销毁的uniq_ptr
   unique_ptr<int> clone(int p){
     return unique_ptr<int> (new int(p));//ok
