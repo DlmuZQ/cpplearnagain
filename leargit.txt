@@ -51,3 +51,11 @@
 	修改 .ssh 目录的权限为 700
 
 	修改 .ssh/authorized_keys 文件的权限为 600
+	
+15、git log --graph:可以查看分支并图
+16、合并分支时，加上--no-ff参数就可以用普通模式合并，合并后的历史有分支，能看出来曾经做过合并，而fast forward合并就看不出来曾经做过合并。
+17、bug分支：
+    a、当前代码未完成，不能提交时，使用git stash,可将工作现场暂存起来
+	b、当bug修复完后，可使用git stash list查看存储的工作现场
+	c、使用git stash apply恢复，但是stash并不会被删除，使用git stash drop删除；
+	   也可以直接使用git stash pop，恢复并删除；git stash apply stash@{0}恢复指定的工作区。
