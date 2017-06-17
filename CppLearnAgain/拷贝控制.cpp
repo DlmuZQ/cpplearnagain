@@ -292,3 +292,42 @@ void reallocate(){
     cap = elements + newcapacity;
 }
 *使用移动迭代器，必须确认移动后源对象没有其他用户*
+
+12、右值引用与成员函数
+a、移动和拷贝版本的重载函数
+void push_back(const X &);
+void push_back(X&&);
+b、引用限定符（&、&&），可以指出返回值是左值还是右值
+class F{
+    F &operator=(const F &) &;
+ }
+F &F::operator=(const F &) &
+{
+    //.../
+    return *this;
+}
+当与const连用时，const在&（&&）之前
+c、重载与引用函数
+//程序4
+class Test{
+public:
+    Test sorted() &&;           //可用于可变的右值
+    Test sorted() const &;      //用于任何类型的Test
+private:
+    vector<int> data;
+};
+//对象为右值，确保了没有其他用户，因此可以原地址排序
+Test Test::sorted() &&
+{
+    sort(data.begin(),data.end());
+    return *this;
+}
+//对象为左值时，要保证原地址的有序性
+Test Test::sorted() const &
+{
+    Test ret(*this);
+    sort(ret.data.begin(),ret.data.end());
+    return ret;
+}
+
+*如果定义了两个或以上具有相同名字和参数的成员函数，就必须对所有函数都加上引用限定符，或者都不加。***
